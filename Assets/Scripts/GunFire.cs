@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GunFire : MonoBehaviour
+{
+    [SerializeField] int hasarMiktari = 5;
+
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Fire1") && Mermi._cephane > 0)
+        {
+            Mermi._cephane--;
+            RaycastHit Atis;
+
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out Atis))
+            {
+                    Atis.transform.SendMessage("dusman", hasarMiktari);
+                
+            }
+        }
+    }
+}

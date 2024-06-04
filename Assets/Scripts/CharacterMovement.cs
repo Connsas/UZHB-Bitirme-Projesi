@@ -25,6 +25,7 @@ public class CharacterMovement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
+
         if (isGrounded && _velocity.y < 0)
         {
             _velocity.y = -2f;
