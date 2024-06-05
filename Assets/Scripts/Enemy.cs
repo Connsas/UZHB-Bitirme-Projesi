@@ -9,9 +9,16 @@ public class Enemy : MonoBehaviour
     private int damage;
     private int speed;
     private int reward;
+    private bool isDead = true;
 
     [SerializeField] private GameObject enemy;
+    [SerializeField] private AudioClip acZombieNoticed;
+    [SerializeField] private AudioClip acZombieAttack;
+    [SerializeField] private AudioClip acZombieDeath;
+    [SerializeField] private AudioClip acZombieIdle;
     private string enemyName;
+    private AudioSource audioSource;
+    [SerializeField] private Animator animator;
 
     public void hit(int damage)
     {
@@ -21,6 +28,8 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         enemyName = gameObject.name;
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
         if (enemyName.Equals("ZombieRunner"))
         { 
             health = ZombieRunner.Health;
@@ -40,13 +49,20 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Death();
+        if (health <= 0)
+        {
+            Death();
+        }
     }
 
     private void Death()
     {
-        if (health <= 0)
+        
+        if (isDead)
         {
+            isDead = false;
+            PlayDeathAudio();
+            animator.SetBool("isDying", true);
             Invoke("Destroy", 3);
         }
     }
@@ -54,5 +70,11 @@ public class Enemy : MonoBehaviour
     private void Destroy()
     {
         Destroy(enemy);
+    }
+
+    private void PlayDeathAudio()
+    {
+        audioSource.clip = acZombieDeath;
+        audioSource.Play();
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -15,13 +16,26 @@ public class Gun : MonoBehaviour
     public float reloadTime;
     public int cost;
     [SerializeField] private GameObject gun;
+    [SerializeField] private AudioClip DeagleReload;
+    [SerializeField] private AudioClip DeagleFire;
+    [SerializeField] private AudioClip StartingPistolReload;
+    [SerializeField] private AudioClip StartingPistolFire;
+    [SerializeField] private AudioClip UspsReload;
+    [SerializeField] private AudioClip UspsFire;
+    private AudioClip gunReload;
+    private AudioClip gunFire;
     private string gunName;
+    private AudioSource audioSource;
+    [SerializeField]private Animator animator;
 
     private void Start()
     {
         gunName = gameObject.name;
+        audioSource = gun.GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
         if (gunName.Equals("StartingPistol"))
         {
+            
             totalAmmo = StartingPistol.TotalAmmo;
             maxMagazineAmmo = StartingPistol.MaxMagazineAmmo;
             reservedAmmo = StartingPistol.ReservedAmmo;
@@ -29,6 +43,8 @@ public class Gun : MonoBehaviour
             fireCooldown = StartingPistol.FireCooldown;
             reloadTime = StartingPistol.ReloadTime;
             cost = StartingPistol.Cost;
+            gunReload = StartingPistolReload;
+            gunFire = StartingPistolFire;
         }
         else if(gunName.Equals("USP-S"))
         {
@@ -39,6 +55,8 @@ public class Gun : MonoBehaviour
             fireCooldown = Usp.FireCooldown;
             reloadTime = Usp.ReloadTime;
             cost = Usp.Cost;
+            gunReload = UspsReload;
+            gunFire = UspsFire;
         }
         else if(gunName.Equals("Deagle"))
         {
@@ -49,6 +67,8 @@ public class Gun : MonoBehaviour
             fireCooldown = Deagle.FireCooldown;
             reloadTime = Deagle.ReloadTime;
             cost = Deagle.Cost;
+            gunReload = DeagleReload;
+            gunFire = DeagleFire;
         }
 
         isFired = false;
@@ -66,12 +86,14 @@ public class Gun : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && magazineAmmo > 0 && !isFired && !isReloading)
         {
+            audioSource.clip = gunFire;
+            audioSource.Play();
             magazineAmmo--;
-            RaycastHit Atis;
+            RaycastHit Hit;
 
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out Atis))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out Hit))
             {
-                Atis.transform.SendMessage("hit", damage);
+                Hit.transform.SendMessage("hit", damage);
             }
 
             StartCoroutine(FireCooldown());
@@ -82,6 +104,9 @@ public class Gun : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && magazineAmmo != maxMagazineAmmo && !isReloading)
         {
+            audioSource.clip = gunReload;
+            audioSource.Play();
+            
             if (reservedAmmo >= maxMagazineAmmo)
             {
                 reservedAmmo -= maxMagazineAmmo - magazineAmmo;
@@ -100,7 +125,6 @@ public class Gun : MonoBehaviour
                     reservedAmmo = 0;
                 }
             }
-
             StartCoroutine(ReloadCooldown());
         }
     }
@@ -108,14 +132,18 @@ public class Gun : MonoBehaviour
     private IEnumerator ReloadCooldown()
     {
         isReloading = true;
+        animator.SetBool("isReloading", true);
         yield return new WaitForSeconds(reloadTime);
+        animator.SetBool("isReloading", false);
         isReloading = false;
     }
 
     private IEnumerator FireCooldown()
     {
         isFired = true;
+        animator.SetBool("isFired", true);
         yield return new WaitForSeconds(fireCooldown);
+        animator.SetBool("isFired", false);
         isFired = false;
     }
 }

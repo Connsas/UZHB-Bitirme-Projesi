@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Usp
+public class Usp
 {
     public static int TotalAmmo = 40;
     public static int MaxMagazineAmmo = 10;

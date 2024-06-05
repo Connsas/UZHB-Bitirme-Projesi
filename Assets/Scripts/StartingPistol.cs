@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class StartingPistol
+public class StartingPistol
 {
     public static int TotalAmmo = 60;
     public static int MaxMagazineAmmo = 12;

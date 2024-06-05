@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Deagle
+public class Deagle
 {
     public static int TotalAmmo = 35;
     public static int MaxMagazineAmmo = 7;
