@@ -10,11 +10,18 @@ public class PlayerStats : MonoBehaviour
     public static int playerHealth = 100;
     public static float stamina = 100;
     public static float staminaLimit = 100;
-    public static int reward = 0;
+    public static int reward = 700;
+    private int staminaInt;
+
+    public void Start()
+    {
+        staminaInt = 100;
+    }
 
     private void Update()
-    {
-        int staminaInt = ((int)stamina);
+    { 
+        staminaInt = ((int)stamina);
+        if(staminaInt > 100) staminaInt = 100;
         _textStamina.text = staminaInt.ToString();
     }
 }

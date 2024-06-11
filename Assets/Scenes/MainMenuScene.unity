@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 220703389}
   - component: {fileID: 220703388}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TextHowToPlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,12 +528,15 @@ MonoBehaviour:
     Control you character with WASD and fire with
     LMB.
 
-    Left Shift for sprint and space for jump.
+    LEFT SHIFT for sprint and SPACE for jump.
 
     Sprinting consume your
     stamina so be careful.
 
     Take aim to head for more damage.
+
+    Change weapons
+    with 1 2 3 if you already purchased.
 
 '
   m_isRightToLeft: 0
@@ -562,10 +565,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 18.45
   m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -2904,17 +2907,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1963232022}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &1358980791
 GameObject:
@@ -3538,7 +3541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1963232023
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3900,6 +3903,7 @@ MonoBehaviour:
   _textVolumeValue: {fileID: 189748307}
   _slider: {fileID: 1131718908}
   defaultVolume: 1
+  currentVolume: 1
 --- !u!224 &2124164027
 RectTransform:
   m_ObjectHideFlags: 0

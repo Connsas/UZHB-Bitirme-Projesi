@@ -11,11 +11,15 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private TMP_Text _textVolumeValue;
     [SerializeField] private Slider _slider = null;
     [SerializeField] private float defaultVolume = 1.0f;
+    [SerializeField] private float currentVolume = 1.0f;
 
     public void Start()
     {
         _slider.onValueChanged.AddListener(SetVolume);
-        SetVolume(defaultVolume);
+        if (PlayerPrefs.GetFloat("mainVolume") != float.NaN) currentVolume = PlayerPrefs.GetFloat("mainVolume");
+        SetVolume(currentVolume);
+        _slider.value = currentVolume;
+        _textVolumeValue.text = currentVolume.ToString("0.0");
     }
 
     public void StartGame()
@@ -54,7 +58,7 @@ public class MainMenu : MonoBehaviour
     {
         //Player Stats
         PlayerStats.playerHealth = 100;
-        PlayerStats.reward = 0;
+        PlayerStats.reward = 500; // Sunumdan sonra 0 a deðiþecek
 
         //Gun States
         Deagle.isAvailable = false;

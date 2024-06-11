@@ -12,6 +12,7 @@ public class GamePausedMenu : MonoBehaviour
     [SerializeField] private TMP_Text _textVolumeValue;
     [SerializeField] private Slider _slider = null;
     [SerializeField] private float defaultVolume = 1.0f;
+    [SerializeField] private float currentVolume = 1.0f;
     [SerializeField] private GameObject _menu;
     [SerializeField] private GameObject _ui;
 
@@ -75,7 +76,9 @@ public class GamePausedMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PlayerPrefs.GetFloat("mainVolume") != float.NaN) currentVolume = PlayerPrefs.GetFloat("mainVolume");
+        _slider.value = currentVolume;
+        _textVolumeValue.text = currentVolume.ToString("0.0");
     }
 
     // Update is called once per frame

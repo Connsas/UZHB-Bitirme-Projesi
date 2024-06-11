@@ -16,6 +16,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private Text _textDeagle;
     [SerializeField] private TMP_Text _textCostDeagle;
     private bool isShopOpened = false;
+    public static bool isShopAvaliable = false;
 
     public void Purchase(string gunName)
     {
@@ -46,23 +47,27 @@ public class Shop : MonoBehaviour
 
     public void OpenShop()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !isShopOpened && GameState.GameCondition == GameState.GameConditions.GAME_PLAY)
+        if (isShopAvaliable)
         {
-            isShopOpened = true;
-            _shop.SetActive(true);
-            _ui.SetActive(false);
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
+            if (Input.GetKeyDown(KeyCode.E) && !isShopOpened && GameState.GameCondition == GameState.GameConditions.GAME_PLAY)
+            {
+                isShopOpened = true;
+                _shop.SetActive(true);
+                _ui.SetActive(false);
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
 
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && isShopOpened && GameState.GameCondition == GameState.GameConditions.GAME_PLAY)
+            {
+                isShopOpened = false;
+                _shop.SetActive(false);
+                _ui.SetActive(true);
+                Time.timeScale = 1;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.E) && isShopOpened && GameState.GameCondition == GameState.GameConditions.GAME_PLAY)
-        {
-            isShopOpened = false;
-            _shop.SetActive(false);
-            _ui.SetActive(true);
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+
     }
 
     private void CheckButtonState()
@@ -74,7 +79,7 @@ public class Shop : MonoBehaviour
                 _buttonUsps.interactable = true;
             }
 
-            if (PlayerStats.reward >= Deagle.Cost && !Usp.isAvailable)
+            if (PlayerStats.reward >= Deagle.Cost && !Deagle.isAvailable)
             {
                 _buttonDeagle.interactable = true;
             }
