@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000011394009582}
   - component: {fileID: 33000010444884772}
   - component: {fileID: 23000011610948646}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hangar_v2_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,6 +36,7 @@ Transform:
   - {fileID: 4000013086714930}
   - {fileID: 4000010267013564}
   - {fileID: 4000012667116448}
+  - {fileID: 1176878501786756284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33000010444884772
@@ -99,7 +100,7 @@ GameObject:
   - component: {fileID: 4000012667116448}
   - component: {fileID: 33000012078605066}
   - component: {fileID: 23000010877820564}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hangar_v2_6_supports
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +183,7 @@ GameObject:
   - component: {fileID: 4000011270217810}
   - component: {fileID: 33000013900247842}
   - component: {fileID: 23000011608946296}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hangar_v2_6_door1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +266,7 @@ GameObject:
   - component: {fileID: 4000012826307164}
   - component: {fileID: 33000010047357014}
   - component: {fileID: 23000014179686784}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hangar_v2_6_gate1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +349,7 @@ GameObject:
   - component: {fileID: 4000013086714930}
   - component: {fileID: 33000013076939342}
   - component: {fileID: 23000010372870322}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hangar_v2_6_gate2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +432,7 @@ GameObject:
   - component: {fileID: 4000010267013564}
   - component: {fileID: 33000010092581644}
   - component: {fileID: 23000012872808408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hangar_v2_6_inside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,3 +504,51 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5400461254084757337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1176878501786756284}
+  - component: {fileID: 5383738218921031202}
+  m_Layer: 10
+  m_Name: NavMesh Modifier Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1176878501786756284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5400461254084757337}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.63, y: 3.85, z: -0.47}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4000011394009582}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5383738218921031202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5400461254084757337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 20.307995, y: 9.0494, z: 14.555374}
+  m_Center: {x: -6.4406853, y: -0.06665349, z: 0.057109833}
+  m_Area: 1
+  m_AffectedAgents: ffffffff

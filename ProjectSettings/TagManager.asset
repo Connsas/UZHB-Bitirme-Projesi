@@ -5,6 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Ammo
+  - EnemyHeadFront
+  - EnemyHeadBack
+  - EnemyBodyFront
+  - EnemyBodyBack
+  - WalkerHeadFront
+  - WalkerHeadBack
+  - WalkerBodyFront
+  - WalkerBodyBack
   layers:
   - Default
   - TransparentFX
@@ -12,12 +21,12 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ZombieHitBox
+  - Zombie
+  - Road
+  - Wall
+  - Object
+  - Gun
   - 
   - 
   - 
